@@ -1,5 +1,8 @@
 package com.anapazsatanas.dsuser.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.hibernate.validator.constraints.br.CPF;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.Instant;
@@ -12,10 +15,14 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String name;
+    @CPF
     private String cpf;
+    @Column(nullable = false)
     private Double income;
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone = "GMT-3")
+   // @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant birthDate;
     private Integer children;
 
