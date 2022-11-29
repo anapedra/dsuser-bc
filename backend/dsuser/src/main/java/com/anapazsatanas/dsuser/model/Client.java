@@ -18,12 +18,15 @@ public class Client implements Serializable {
     @Column(nullable = false)
     private String name;
     @CPF
+    @Column(unique = true)
     private String cpf;
     @Column(nullable = false)
     private Double income;
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'",timezone = "GMT-3")
    // @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @Column
     private Instant birthDate;
+    @Column
     private Integer children;
 
     public Client(){
