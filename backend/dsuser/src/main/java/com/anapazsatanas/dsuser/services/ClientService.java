@@ -1,6 +1,6 @@
-package com.anapazsatanas.dsuser.clientuser;
+package com.anapazsatanas.dsuser.services;
 
-import com.anapazsatanas.dsuser.clientRepository.ClientRepository;
+import com.anapazsatanas.dsuser.resources.ClientRepository;
 import com.anapazsatanas.dsuser.model.Client;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

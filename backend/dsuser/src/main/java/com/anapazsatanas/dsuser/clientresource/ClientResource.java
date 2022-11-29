@@ -1,6 +1,6 @@
 package com.anapazsatanas.dsuser.clientresource;
 
-import com.anapazsatanas.dsuser.clientuser.ClientService;
+import com.anapazsatanas.dsuser.services.ClientService;
 import com.anapazsatanas.dsuser.model.Client;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
