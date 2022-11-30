@@ -1,6 +1,6 @@
 package com.anapazsatanas.dsuser;
 
-import com.anapazsatanas.dsuser.resources.ClientRepository;
+import com.anapazsatanas.dsuser.clientrepository.ClientRepository;
 import com.anapazsatanas.dsuser.model.Client;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

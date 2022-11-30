@@ -1,4 +1,4 @@
-package com.anapazsatanas.dsuser.resources;
+package com.anapazsatanas.dsuser.clientrepository;
 
 import com.anapazsatanas.dsuser.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;

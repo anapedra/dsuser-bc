@@ -1,8 +1,7 @@
-package com.anapazsatanas.dsuser.clientresource;
+package com.anapazsatanas.dsuser.resources.clientresource;
 
 import com.anapazsatanas.dsuser.DTO.ClientDTO;
-import com.anapazsatanas.dsuser.services.ClientService;
-import com.anapazsatanas.dsuser.model.Client;
+import com.anapazsatanas.dsuser.services.clientservice.ClientService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -12,7 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "/clients")
@@ -46,7 +44,7 @@ public class ClientResource {
 
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ClientDTO>upDate(@PathVariable Long id,@RequestBody  ClientDTO client){
+    public ResponseEntity<ClientDTO>upDate(@PathVariable Long id,@RequestBody  @Valid ClientDTO client){
         client=clientService.upDateClient(id, client);
         return ResponseEntity.noContent().build();
     }

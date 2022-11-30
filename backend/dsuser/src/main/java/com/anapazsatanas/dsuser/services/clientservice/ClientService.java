@@ -1,11 +1,10 @@
-package com.anapazsatanas.dsuser.services;
+package com.anapazsatanas.dsuser.services.clientservice;
 
 import com.anapazsatanas.dsuser.DTO.ClientDTO;
-import com.anapazsatanas.dsuser.resources.ClientRepository;
+import com.anapazsatanas.dsuser.clientrepository.ClientRepository;
 import com.anapazsatanas.dsuser.model.Client;
 import com.anapazsatanas.dsuser.services.exceptions.DataBaseException;
 import com.anapazsatanas.dsuser.services.exceptions.ResourceNotFoundException;
-import org.springframework.beans.BeanUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
@@ -39,18 +38,23 @@ public class ClientService {
     }
     @Transactional
     public ClientDTO saveClient(ClientDTO clientDTO) {
-        var client=new Client();
-        copyDtoToEntity(clientDTO,client);
-       // BeanUtils.copyProperties(clientDTO,client);
-        client=clientRepository.save(client);
-        return new ClientDTO(client);
+        try {
+                var client=new Client();
+                copyDtoToEntity(clientDTO,client);
+                client=clientRepository.save(client);
+                return new ClientDTO(client);
+        }catch (javax.validation.ConstraintViolationException e){
+            throw new DataBaseException("CPF not exists!");
+        }catch ( DataIntegrityViolationException e){
+            throw new DataBaseException("CPF exists!");
+        }
+
     }
     @Transactional
     public ClientDTO upDateClient(Long id, ClientDTO clientDTO){
         try {
             var client= clientRepository.getReferenceById(id);
-            // BeanUtils.copyProperties(clientDTO,client);
-            copyDtoToEntity(clientDTO,client);
+             copyDtoToEntity(clientDTO,client);
             client=clientRepository.save(client);
             return new ClientDTO(client);
         }

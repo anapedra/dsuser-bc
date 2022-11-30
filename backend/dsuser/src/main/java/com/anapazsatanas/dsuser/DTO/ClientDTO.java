@@ -2,11 +2,7 @@ package com.anapazsatanas.dsuser.DTO;
 
 
 import com.anapazsatanas.dsuser.model.Client;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.validator.constraints.br.CPF;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.Instant;
@@ -19,7 +15,6 @@ public class ClientDTO implements Serializable{
     private String name;
     @NotBlank
     private String cpf;
-    @NotBlank
     private Double income;
     private Instant birthDate;
     private Integer children;
